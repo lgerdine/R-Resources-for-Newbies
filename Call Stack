@@ -1,0 +1,32 @@
+List of call stack commands in R
+Source: http://www.hep.by/gnu/r-patched/r-lang/R-lang_53.html
+
+3.5.3 The call stack 
+
+Every time a  function is invoked a new evaluation frame is created. At any point in time during the computation the currently active environments are accessible through the call stack. Each time a function is invoked a special construct called a context is created internally and is placed on a list of contexts. When a function has finished evaluating its context is removed from the call stack. 
+
+Making variables defined higher up the call stack available is called  dynamic scope. The binding for a variable is then determined by the most recent (in time) definition of the variable. This contradicts the default scoping rules in R, which use the bindings in the  environment in which the function was defined (lexical scope). Some functions, particularly those that use and manipulate model formulas, need to simulate dynamic scope by directly accessing the call stack. 
+
+Access to the  call stack is provided through a family of functions which have names that start with `sys.'. They are listed briefly below. 
+ sys.call
+Get the call for the specified context. 
+sys.frame
+Get the evaluation frame for the specified context. 
+sys.nframe
+Get the environment frame for all active contexts. 
+sys.function
+Get the function being invoked in the specified context. 
+sys.parent
+Get the parent of the current function invocation. 
+sys.calls
+Get the calls for all the active contexts. 
+sys.frames
+Get the evaluation frames for all the active contexts. 
+sys.parents
+Get the numeric labels for all active contexts. 
+sys.on.exit
+Set a function to be executed when the specified context is exited. 
+sys.status
+Calls sys.frames, sys.parents and sys.calls. 
+parent.frame
+Get the evaluation frame for the specified parent context. 
